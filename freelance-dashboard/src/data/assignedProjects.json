@@ -1,0 +1,42 @@
+[
+  {
+    "id": "p1",
+    "title": "E-commerce Website UI",
+    "client": "ABC Retail Pvt Ltd",
+    "description": "Design modern UI for an e-commerce platform.",
+    "duration": "2 weeks",
+    "expectedHours": 40,
+    "payment": "₹25,000",
+    "status": "pending"
+  },
+  {
+    "id": "p2",
+    "title": "Portfolio Website",
+    "client": "John Doe",
+    "description": "Personal portfolio website for a photographer.",
+    "duration": "1 week",
+    "expectedHours": 20,
+    "payment": "₹10,000",
+    "status": "pending"
+  },
+  {
+    "id": "p3",
+    "title": "Dashboard UI Redesign",
+    "client": "FinTech Corp",
+    "description": "Redesign analytics dashboard UI.",
+    "duration": "3 weeks",
+    "expectedHours": 60,
+    "payment": "₹45,000",
+    "status": "pending"
+  },
+  {
+    "id": "p4",
+    "title": "Mobile App Landing Page",
+    "client": "Startup XYZ",
+    "description": "Landing page design for a mobile app.",
+    "duration": "5 days",
+    "expectedHours": 15,
+    "payment": "₹8,000",
+    "status": "pending"
+  }
+]

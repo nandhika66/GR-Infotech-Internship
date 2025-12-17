@@ -1,49 +1,52 @@
 import { useEffect, useRef, useState } from "react";
+import { formatTime } from "../utils/time";
 
-export default function Timer({ task, onTimeUpdate }) {
+export default function Timer({ onTick, seconds, maxSeconds }) {
   const [running, setRunning] = useState(false);
-  const intervalRef = useRef(null);
-
-  // 🔥 local ticking state
-  const timeRef = useRef(task.timeSpent);
+  const ref = useRef(null);
 
   useEffect(() => {
-    timeRef.current = task.timeSpent;
-  }, [task.timeSpent]);
+    if (!running) return;
 
-  useEffect(() => {
-    if (running) {
-      intervalRef.current = setInterval(() => {
-        timeRef.current += 1;
+    ref.current = setInterval(() => {
+      onTick();
+    }, 1000);
 
-        onTimeUpdate({
-          ...task,
-          timeSpent: timeRef.current
-        });
-      }, 1000);
-    }
-
-    return () => clearInterval(intervalRef.current);
+    return () => clearInterval(ref.current);
   }, [running]);
 
-  const formatTime = secs => {
-    const m = Math.floor(secs / 60);
-    const s = secs % 60;
-    return `${m}:${s.toString().padStart(2, "0")}`;
-  };
+  const remaining = Math.max(maxSeconds - seconds, 0);
+  const progress = maxSeconds
+    ? Math.min((seconds / maxSeconds) * 100, 100)
+    : 0;
 
   return (
-    <div className="flex items-center gap-3 mt-2">
-      <span className="text-sm text-gray-700">
-        Time: {formatTime(task.timeSpent)}
-      </span>
+    <div className="mb-6">
+      <div className="text-5xl font-mono font-bold mb-2">
+        {formatTime(seconds)}
+      </div>
 
-      <button
-        onClick={() => setRunning(prev => !prev)}
-        className="px-2 py-1 text-xs border rounded"
-      >
-        {running ? "Stop" : "Start"}
-      </button>
+      <div className="h-3 bg-gray-200 rounded mb-2">
+        <div
+          className="h-3 bg-indigo-600 rounded"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+
+      <div className="flex items-center gap-4">
+        <button
+          onClick={() => setRunning(!running)}
+          className={`px-4 py-2 rounded text-white ${
+            running ? "bg-red-500" : "bg-indigo-600"
+          }`}
+        >
+          {running ? "Stop" : "Start"}
+        </button>
+
+        <span className="text-sm text-gray-700">
+          Remaining: {formatTime(remaining)}
+        </span>
+      </div>
     </div>
   );
 }

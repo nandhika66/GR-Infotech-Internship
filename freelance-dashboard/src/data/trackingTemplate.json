@@ -1,0 +1,25 @@
+{
+  "usedSeconds": 0,
+  "tasks": [
+    {
+      "id": "t1",
+      "title": "Planning & Research",
+      "estimatedHours": 5,
+      "usedSeconds": 0,
+      "subtasks": [
+        { "id": "s1", "title": "Requirement analysis", "done": false },
+        { "id": "s2", "title": "Wireframe planning", "done": false }
+      ]
+    },
+    {
+      "id": "t2",
+      "title": "Design Execution",
+      "estimatedHours": 10,
+      "usedSeconds": 0,
+      "subtasks": [
+        { "id": "s3", "title": "Main screens", "done": false },
+        { "id": "s4", "title": "Responsive views", "done": false }
+      ]
+    }
+  ]
+}
